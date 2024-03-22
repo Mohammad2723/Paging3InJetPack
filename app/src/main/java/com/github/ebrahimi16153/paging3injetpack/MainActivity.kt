@@ -1,6 +1,7 @@
 package com.github.ebrahimi16153.paging3injetpack
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.github.ebrahimi16153.paging3injetpack.ui.theme.Paging3InJetPackTheme
+import com.github.ebrahimi16153.paging3injetpack.util.Constant
 
 class MainActivity : ComponentActivity() {
 
@@ -24,6 +26,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Greeting("Android")
+                    Log.i("Build",Constant.API_KEY)
+                    Log.i("Build","2")
                 }
             }
         }
