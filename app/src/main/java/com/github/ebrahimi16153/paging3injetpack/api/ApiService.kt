@@ -1,6 +1,6 @@
 package com.github.ebrahimi16153.paging3injetpack.api
 
-import com.github.ebrahimi16153.paging3injetpack.models.UnsplashImage
+import com.github.ebrahimi16153.paging3injetpack.models.unsplashimage.UnsplashImage
 import com.github.ebrahimi16153.paging3injetpack.util.Constant
 import retrofit2.http.GET
 import retrofit2.http.Headers

@@ -1,4 +1,4 @@
-package com.github.ebrahimi16153.paging3injetpack.models
+package com.github.ebrahimi16153.paging3injetpack.models.unsplashimage
 
 import androidx.room.Embedded
 import androidx.room.Entity
@@ -13,8 +13,8 @@ data class UnsplashImage(
     @PrimaryKey(autoGenerate = false)
     val id:String,
     @Embedded
-    val urls:Urls,
+    val urls: Urls,
     val likeLInt: Int,
     @Embedded
-    val user:User
+    val user: User
 )
