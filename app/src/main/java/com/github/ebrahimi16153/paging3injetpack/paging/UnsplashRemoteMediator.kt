@@ -7,7 +7,7 @@ import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.github.ebrahimi16153.paging3injetpack.api.ApiService
 import com.github.ebrahimi16153.paging3injetpack.db.UnsplashDataBase
-import com.github.ebrahimi16153.paging3injetpack.models.UnsplashRemoteKey
+import com.github.ebrahimi16153.paging3injetpack.models.remot.UnsplashRemoteKey
 import com.github.ebrahimi16153.paging3injetpack.models.unsplashimage.UnsplashImage
 import com.github.ebrahimi16153.paging3injetpack.util.Constant.ITEMS_PER_PAGE
 import javax.inject.Inject

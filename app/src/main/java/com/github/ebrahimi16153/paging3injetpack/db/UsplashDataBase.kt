@@ -2,7 +2,7 @@ package com.github.ebrahimi16153.paging3injetpack.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.github.ebrahimi16153.paging3injetpack.models.UnsplashRemoteKey
+import com.github.ebrahimi16153.paging3injetpack.models.remot.UnsplashRemoteKey
 import com.github.ebrahimi16153.paging3injetpack.models.unsplashimage.UnsplashImage
 
 
