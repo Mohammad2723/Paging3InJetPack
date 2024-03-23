@@ -13,7 +13,7 @@ import com.github.ebrahimi16153.paging3injetpack.util.Constant
 interface UnsplashImageDao {
 
     @Query("SELECT * FROM ${Constant.UN_SPLASH_IMAGE_TABLE}")
-    suspend fun getAllImages():PagingSource<Int,UnsplashImage>
+     fun getAllImages():PagingSource<Int,UnsplashImage>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addImages(images:List<UnsplashImage>)
