@@ -13,7 +13,7 @@ import com.github.ebrahimi16153.paging3injetpack.util.Constant.ITEMS_PER_PAGE
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
-class UnsplashRemoteMediator @Inject constructor(
+class UnsplashRemoteMediator (
     private val apiService: ApiService,
     private val unsplashDataBase: UnsplashDataBase
 ) : RemoteMediator<Int, UnsplashImage>() {

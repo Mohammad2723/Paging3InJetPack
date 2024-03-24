@@ -9,6 +9,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.annotation.ExperimentalCoilApi
+import com.github.ebrahimi16153.paging3injetpack.navigation.Screen
 import com.github.ebrahimi16153.paging3injetpack.screens.common.ListContent
 import com.github.ebrahimi16153.paging3injetpack.viewmodel.HomeViewModel
 
@@ -20,7 +21,9 @@ fun HomeScreen(navController: NavController,homeViewModel: HomeViewModel = hiltV
 
     Scaffold(
         topBar = {
-            HomeTopBar(onSearchClicked = {})
+            HomeTopBar(onSearchClicked = {
+                navController.navigate(Screen.Search.route)
+            })
         }
     ) {
         Surface(modifier = Modifier.padding(it)) {

@@ -55,8 +55,10 @@ fun ListContent(items: LazyPagingItems<UnsplashImage>) {
         contentPadding = PaddingValues(all = 12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-            items(items.itemCount){
-                items[it]?.let { it1 -> UnsplashItem(unsplashImage = it1) }
+            items(items.itemCount ){
+
+                items[it]?.let { unsplashImage -> UnsplashItem(unsplashImage = unsplashImage) }
+
             }
     }
 }

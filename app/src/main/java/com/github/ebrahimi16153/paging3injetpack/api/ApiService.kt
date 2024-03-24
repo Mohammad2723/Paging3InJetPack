@@ -1,5 +1,6 @@
 package com.github.ebrahimi16153.paging3injetpack.api
 
+import com.github.ebrahimi16153.paging3injetpack.models.SearchResult
 import com.github.ebrahimi16153.paging3injetpack.models.unsplashimage.UnsplashImage
 import com.github.ebrahimi16153.paging3injetpack.util.Constant
 import retrofit2.http.GET
@@ -14,8 +15,10 @@ interface ApiService {
     :List<UnsplashImage>
 
 
-    @Headers("Authorization: ${Constant.API_KEY}")
+    @Headers("Authorization: Client-ID ${Constant.API_KEY}")
     @GET("search/photos")
-    suspend fun searchImages(@Query("page") page:Int, @Query("pre_page") prePage:Int)
-            :List<UnsplashImage>
+    suspend fun searchImages(
+        @Query("query") query: String,
+        @Query("per_page") perPage: Int
+    ): SearchResult
 }
