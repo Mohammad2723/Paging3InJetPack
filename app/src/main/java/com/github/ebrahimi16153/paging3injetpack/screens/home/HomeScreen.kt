@@ -24,7 +24,7 @@ fun HomeScreen(navController: NavController,homeViewModel: HomeViewModel = hiltV
         }
     ) {
         Surface(modifier = Modifier.padding(it)) {
-            ListContent(items = allImages.itemSnapshotList.items )
+            ListContent(items = allImages )
         }
     }
 

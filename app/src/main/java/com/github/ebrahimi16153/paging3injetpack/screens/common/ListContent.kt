@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material3.Divider
@@ -37,6 +36,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
+import androidx.paging.compose.LazyPagingItems
 import androidx.wear.compose.material.ContentAlpha
 import androidx.wear.compose.material.Text
 import coil.annotation.ExperimentalCoilApi
@@ -49,17 +49,15 @@ import com.github.ebrahimi16153.paging3injetpack.models.unsplashimage.UserLinks
 
 @ExperimentalCoilApi
 @Composable
-fun ListContent(items: List<UnsplashImage>) {
+fun ListContent(items: LazyPagingItems<UnsplashImage>) {
         LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(all = 12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-
-        items(items = items , key = {it.id} ) { unsplashImage ->
-            UnsplashItem(unsplashImage = unsplashImage)
-
-        }
+            items(items.itemCount){
+                items[it]?.let { it1 -> UnsplashItem(unsplashImage = it1) }
+            }
     }
 }
 
