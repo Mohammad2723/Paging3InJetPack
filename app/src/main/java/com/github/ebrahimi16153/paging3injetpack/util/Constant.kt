@@ -4,7 +4,7 @@ import com.github.ebrahimi16153.paging3injetpack.BuildConfig
 
 object Constant {
 
-    const val TIMEOUT = 30L
+    const val TIMEOUT = 120L
     const val BASE_URL = "https://api.unsplash.com/"
 
     const val UN_SPLASH_IMAGE_TABLE = "un_splash_image_table"

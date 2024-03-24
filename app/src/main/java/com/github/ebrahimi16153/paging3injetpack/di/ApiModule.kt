@@ -35,6 +35,7 @@ class ApiModule {
             .writeTimeout(time, TimeUnit.SECONDS)
             .readTimeout(time, TimeUnit.SECONDS)
             .connectTimeout(time, TimeUnit.SECONDS)
+            .callTimeout(time,TimeUnit.SECONDS)
             .build()
 
     @Singleton
@@ -43,7 +44,7 @@ class ApiModule {
 
     @Singleton
     @Provides
-    fun provideJson() = Json { ignoreUnknownKeys }
+    fun provideJson() = Json { ignoreUnknownKeys = true }
 
 
     @Singleton

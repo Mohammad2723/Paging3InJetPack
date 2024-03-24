@@ -2,7 +2,6 @@ package com.github.ebrahimi16153.paging3injetpack.screens.common
 
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -35,10 +34,9 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat.startActivity
-import androidx.paging.compose.LazyPagingItems
 import androidx.wear.compose.material.ContentAlpha
 import androidx.wear.compose.material.Text
 import coil.annotation.ExperimentalCoilApi
@@ -51,16 +49,15 @@ import com.github.ebrahimi16153.paging3injetpack.models.unsplashimage.UserLinks
 
 @ExperimentalCoilApi
 @Composable
-fun ListContent(items: LazyPagingItems<UnsplashImage>) {
-    Log.d("Error", items.loadState.toString())
-    LazyColumn(
+fun ListContent(items: List<UnsplashImage>) {
+        LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(all = 12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
 
-        items(items = items.itemSnapshotList, key = { it!!.id }) { unsplashImage ->
-            unsplashImage?.let { UnsplashItem(unsplashImage = it) }
+        items(items = items , key = {it.id} ) { unsplashImage ->
+            UnsplashItem(unsplashImage = unsplashImage)
 
         }
     }
@@ -69,12 +66,14 @@ fun ListContent(items: LazyPagingItems<UnsplashImage>) {
 @ExperimentalCoilApi
 @Composable
 fun UnsplashItem(unsplashImage: UnsplashImage) {
+
     val painter = rememberImagePainter(data = unsplashImage.urls.regularImage) {
         crossfade(durationMillis = 1000)
         error(R.drawable.ic_placeholder)
         placeholder(R.drawable.ic_placeholder)
     }
-    val context = LocalContext.current
+
+        val context = LocalContext.current
     Box(
         modifier = Modifier
             .clickable {
@@ -149,14 +148,7 @@ fun LikeCounter(
 
         )
         Divider(modifier = Modifier.width(6.dp))
-//        Text(
-//            text = likes,
-//            color = Color.White,
-//            fontSize = MaterialTheme.typography.headlineSmall,
-//            fontWeight = FontWeight.Bold,
-//            maxLines = 1,
-//            overflow = TextOverflow.Ellipsis
-//        )
+
 
         Text(
             text = likes,
@@ -169,16 +161,20 @@ fun LikeCounter(
     }
 }
 
+
+
+
+
 @ExperimentalCoilApi
 @Composable
-@Preview
+@PreviewLightDark
 fun UnsplashImagePreview() {
     UnsplashItem(
         unsplashImage = UnsplashImage(
             id = "1",
             urls = Urls(regularImage = ""),
             likes = 100,
-            user = User(username = "Stevdza-San", userLink = UserLinks(html = ""))
+            user = User(username = "", userLink = UserLinks(html = ""))
         )
     )
 }
