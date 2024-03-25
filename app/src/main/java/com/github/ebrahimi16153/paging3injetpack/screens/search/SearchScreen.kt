@@ -11,10 +11,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.compose.collectAsLazyPagingItems
+import coil.annotation.ExperimentalCoilApi
 import com.github.ebrahimi16153.paging3injetpack.screens.common.ListContent
 import com.github.ebrahimi16153.paging3injetpack.viewmodel.SearchViewModel
 
-@OptIn(ExperimentalPagingApi::class)
+@OptIn(ExperimentalPagingApi::class, ExperimentalCoilApi::class)
 @Composable
 fun SearchScreen(
     navController: NavHostController,
@@ -22,13 +23,13 @@ fun SearchScreen(
 ) {
     val searchQuery by searchViewModel.searchQuery
     val searchedImages = searchViewModel.searchedImages.collectAsLazyPagingItems()
-
     Scaffold(
         topBar = {
             SearchWidget(
                 text = searchQuery,
                 onTextChange = {
                     searchViewModel.updateSearchQuery(query = it)
+                    searchViewModel.searchHeroes(query = it)
                 },
                 onSearchClicked = {
                     searchViewModel.searchHeroes(query = it)

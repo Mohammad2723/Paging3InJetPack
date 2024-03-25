@@ -3,6 +3,7 @@ package com.github.ebrahimi16153.paging3injetpack.paging
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.github.ebrahimi16153.paging3injetpack.api.ApiService
+import com.github.ebrahimi16153.paging3injetpack.models.SearchResult
 import com.github.ebrahimi16153.paging3injetpack.models.unsplashimage.UnsplashImage
 import com.github.ebrahimi16153.paging3injetpack.util.Constant.ITEMS_PER_PAGE
 
@@ -14,7 +15,7 @@ class SearchPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, UnsplashImage> {
         val currentPage = params.key ?: 1
         return try {
-            val response = apiService.searchImages(query = query, perPage = ITEMS_PER_PAGE)
+            val response: SearchResult = apiService.searchImages(query = query, page = currentPage)
             val endOfPaginationReached = response.images.isEmpty()
             if (response.images.isNotEmpty()) {
                 LoadResult.Page(
@@ -35,7 +36,7 @@ class SearchPagingSource(
     }
 
     override fun getRefreshKey(state: PagingState<Int, UnsplashImage>): Int? {
-        return state.anchorPosition
+        return null
     }
 
 }

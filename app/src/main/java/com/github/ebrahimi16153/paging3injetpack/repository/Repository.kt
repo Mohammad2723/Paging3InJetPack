@@ -33,7 +33,7 @@ class Repository @Inject constructor(
 // search
     fun searchImages(query: String): Flow<PagingData<UnsplashImage>> {
         return Pager(
-            config = PagingConfig(pageSize = ITEMS_PER_PAGE),
+            config = PagingConfig(pageSize = 2),
             pagingSourceFactory = {
                 SearchPagingSource(apiService = apiService, query = query)
             }
