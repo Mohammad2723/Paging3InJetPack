@@ -5,7 +5,6 @@ import androidx.paging.PagingState
 import com.github.ebrahimi16153.paging3injetpack.api.ApiService
 import com.github.ebrahimi16153.paging3injetpack.models.SearchResult
 import com.github.ebrahimi16153.paging3injetpack.models.unsplashimage.UnsplashImage
-import com.github.ebrahimi16153.paging3injetpack.util.Constant.ITEMS_PER_PAGE
 
 class SearchPagingSource(
     private val apiService: ApiService,
@@ -16,12 +15,12 @@ class SearchPagingSource(
         val currentPage = params.key ?: 1
         return try {
             val response: SearchResult = apiService.searchImages(query = query, page = currentPage)
-            val endOfPaginationReached = response.images.isEmpty()
+
             if (response.images.isNotEmpty()) {
                 LoadResult.Page(
                     data = response.images,
                     prevKey = if (currentPage == 1) null else currentPage - 1,
-                    nextKey = if (endOfPaginationReached) null else currentPage + 1
+                    nextKey =  currentPage + 1
                 )
             } else {
                 LoadResult.Page(
